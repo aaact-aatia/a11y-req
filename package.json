@@ -12,6 +12,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^12.2.0",
     "@ckeditor/ckeditor5-upload": "^11.1.1",
+    "async": "^3.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -28,8 +29,6 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1",
-    "webpack": "^4.33.0",
-    "webpack-cli": "^3.3.4"
+    "nodemon": "^1.19.1"
   }
 }
