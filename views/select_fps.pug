@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1#wb-cont(property="name")= title
+  form(method='POST' action='' novalidate='novalidate')
+    .form-group
+      label(for='preset') Load commodity preset
+      select#preset.form-control(name='preset')
+        option(value='custom') Custom (specify clauses below)
+        each preset in preset_list
+          option(value=preset.id) #{preset.name}
+
+    include includes/clause_tree
+
+    button.btn.btn-primary(type='submit') Generate requirements
+  
+  //- Hidden data (for client-side javascript)
+  .hidden#preset-data
+    ul.preset#custom
+    each preset in preset_list
+      ul.preset(id=preset.id)
+        each clause in preset.clauses
+          li #{clause}

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  block form
+    p Form not implemented
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
+    a.btn.btn-primary(href=item.url) Cancel
+
+  if item && !errors
+    hr
+    p
+      a(href=item.url+'/delete') Delete

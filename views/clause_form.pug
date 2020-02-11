@@ -1,0 +1,51 @@
+extends item_form
+
+block form
+  -var itemExists = item!==undefined
+
+  form(method='POST' action='')
+    .form-group
+      label.required(for='number')
+        span.field-name Clause number 
+        strong.required (required)
+      input#number.form-control(type='text' placeholder='' required='required' name='number' value=(itemExists ? item.number : ''))
+    .form-group
+      label.required(for='name')
+        span.field-name Clause name (English) 
+        strong.required (required)
+      input#name.form-control(type='text' placeholder='' required='required' name='name' value=(itemExists ? item.name : ''))
+    .form-group
+      label.required(for='frName')
+        span.field-name Clause name (French) 
+        strong.required (required)
+      input#frName.form-control(lang='fr' type='text' placeholder='' required='required' name='frName' value=(itemExists ? item.frName : ''))
+    .checkbox
+      label(for='informative')
+        input#informative(type='checkbox' name='informative' checked=(itemExists ? item.informative : false))
+        | Informative clause (must be included with parent clause)
+    .form-group
+      label(for='description')
+        span.field-name Description (English) 
+      textarea#description.form-control(name='description' rows='10')
+        if itemExists
+          | #{item.description}
+    .form-group
+      label(for='frDescription')
+        span.field-name Description (French) 
+      textarea#frDescription.form-control(lang='fr' name='frDescription' rows='10')
+        if itemExists
+          | #{item.frDescription}
+    .form-group
+      label(for='compliance')
+        span.field-name Determination of compliance (English) 
+      textarea#compliance.form-control(name='compliance' rows='10')
+        if itemExists
+          | #{item.compliance}
+    .form-group
+      label(for='frCompliance')
+        span.field-name Determination of compliance (French) 
+      textarea#frCompliance.form-control(lang='fr' name='frCompliance' rows='10')
+        if itemExists
+          | #{item.frCompliance}
+      
+    button.btn.btn-primary(type='submit') Submit 

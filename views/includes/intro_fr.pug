@@ -1,0 +1,9 @@
+each item in intro
+  if item.showHeading 
+    .infoHeading
+      h2 #{item.frName}
+  .infoBody
+    | !{item.frBodyHtml}
+  
+else
+  li Aucune section informative à afficher.

@@ -1,0 +1,32 @@
+if item_list.length > 0
+  table.table.table-bordered(alt='Tableau des déclarations de performance fonctionnelle à compléter par le fournisseur')
+    thead
+      tr.active
+        th.col-sm-6(scope='col') Clauses de la norme EN 301 549 2018
+        th.col-sm-4(scope='col') Détermination de la conformité
+        th(scope='col') Respectée?
+        th.col-sm-4(scope='col') Explication
+    tbody
+      each item in item_list
+        tr
+          td(valign='top')
+            p
+              strong #{item.number} #{item.frName}
+            | !{item.frDescription}
+          td(valign='top')
+            p
+              strong C.#{item.number} #{item.frName}
+            | !{item.frCompliance}
+          td(valign='top')
+            if item.informative || item.description.length === 0
+              | ---
+            else
+              | &nbsp;
+          td(valign='top')
+            if item.informative || item.description.length === 0
+              | ---
+            else
+              | &nbsp;
+else
+  p
+    strong Il n'y a pas d'exigences d'accessibilité fonctionnelle.

@@ -1,0 +1,35 @@
+{
+  "name": "wet-mongoose",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^12.2.0",
+    "@ckeditor/ckeditor5-upload": "^11.1.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-validator": "^5.3.1",
+    "html-docx-js": "^0.3.1",
+    "http-auth": "^3.2.3",
+    "http-errors": "~1.6.3",
+    "innertext": "^1.0.3",
+    "jsdom": "^15.1.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.12",
+    "morgan": "~1.9.1",
+    "node-sass-middleware": "0.11.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.4"
+  }
+}

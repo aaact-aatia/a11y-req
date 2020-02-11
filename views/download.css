@@ -1,0 +1,74 @@
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 10pt;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th {
+  background: #eeeeee;
+}
+
+table td,
+table td * {
+  vertical-align: top;
+  font-family: 'Arial', sans-serif;
+}
+
+h1,
+h2 {
+  font-size: 18pt;
+}
+
+a {
+  color: rgb(5, 99, 193);
+}
+
+th,
+td {
+  margin: 2px;
+}
+
+p,
+ol,
+ul {
+  margin-top: 0;
+  margin-bottom: 6pt;
+}
+
+th p {
+  margin-bottom: 0;
+}
+
+figure {
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+  font-weight: bold;
+}
+
+/* MS Word specific CSS to force landscape orientation, correct styles, etc */
+
+/* @page WordSection1 {
+  size: 792.0pt 612.0pt;
+  mso-page-orientation: landscape;
+  margin: 65.0pt 57.0pt .0pt 57.0pt;
+  mso-header-margin: 35.4pt;
+  mso-footer-margin: 35.4pt;
+  mso-paper-source: 0;
+}
+
+div.WordSection1 {
+  page: WordSection1;
+} */

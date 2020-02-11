@@ -1,0 +1,12 @@
+if test_list.length === 1
+  p Clause #{test_list[0].number} has been deemed relevant to this ICT.
+else
+  p
+    | Clauses 
+    each item, i in test_list
+      if i < test_list.length - 2
+        | #{item.number}, 
+      else if i == test_list.length - 2
+        | #{item.number} 
+      else
+        | and #{item.number} have been deemed relevant to this ICT.

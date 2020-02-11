@@ -1,0 +1,9 @@
+each item in annex
+  if item.showHeading 
+    .infoHeading
+      h2 #{item.frName}
+  .infoBody
+    | !{item.frBodyHtml}
+  
+else
+  li There are no French annex sections to display.

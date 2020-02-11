@@ -1,0 +1,45 @@
+-var i = 0
+
+mixin checkbox(label, name)
+  if name === undefined
+    -name = 'checkbox' + i++
+  .checkbox
+      label(for=name)
+        input(id=name type='checkbox' name=name)
+        | !{label}
+
+section#wizard
+  //- p
+  //-   strong Instructions: 
+  //-   | Check all that may apply to the ICT you are procuring.
+  fieldset
+    legend
+      span.field-name Does the <abbr title="Information Communication Technology">ICT</abbr> procurement provide...
+    .row
+      .col-md-6
+        +checkbox('User-facing physical (hardware) components', 'hardware')
+        +checkbox('User-facing hardware that is integrated into the environment (eg. permanently installed self-service kiosk or large, immovable photocopier)', 'integrated')
+        +checkbox('Websites, web applications, or HTML documents', 'web')
+        +checkbox('Documents that are not HTML', 'non-web-docs')
+        +checkbox('Platform software (eg. an operating system)', 'platform')
+        +checkbox('Software that provides a user interface outside of the browser', 'ui')
+        +checkbox('Adaptive (assistive) technology software', 'at')
+        +checkbox('Product documentation', 'documentation')
+        +checkbox('Support services', 'support')
+        +checkbox('Documented accessibility features', 'a11y')
+        +checkbox('Two-way communication (any medium)', 'comm')
+        +checkbox('Two-way voice communication', 'voice-comm')
+        +checkbox('Two-way video communication', 'video-comm')
+        +checkbox('Biometric authentication or control', 'bio')
+      .col-md-6
+        +checkbox('Functionality that is closed to adaptive technologies (eg. a system where no screen-reader software can be installed)', 'closed')
+        +checkbox('Conversion of information between electronic formats', 'conversion')
+        +checkbox('Video playback, transmission, conversion, or recording (with synchronized audio)', 'video-sync')
+        +checkbox('Hardware with speech output', 'speech-output')
+        +checkbox('Relay services (eg. captioned telephony service)', 'relay')
+        +checkbox('Authoring tools (eg. a word processor or web <abbr title="Content Management System">CMS</abbr>)', 'authoring')
+        +checkbox('Fixed-line communication device which is normally held to the ear and carries the "T" symbol', 't-coil')
+        +checkbox('Wireless communication device which is normally held to the ear', 'mobile-phone')
+        +checkbox('Functionality designed for shared use', 'shared')
+        +checkbox('Provisioning keys, tickets or fare cards, where their orientation is important for further use', 'keys')
+        +checkbox('Primary functionality of displaying materials containing video with associated audio content', 'video-player')

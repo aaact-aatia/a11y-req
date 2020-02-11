@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 #{title}: #{item.name}
+  
+  p Do you really want to delete this item?
+  
+  form(method='POST' action='')
+    if dependencies
+      div.error
+        h2 The following presets reference this clause. You must delete them first.
+        ul
+          each d in dependencies
+            li
+              a(href=d.url) #{d.name}
+    div.form-group
+      input#itemid.form-control(type='hidden', name='itemid', required='true', value=item._id )
+
+    a.btn.btn-primary(href=item.url) Cancel
+    if !dependencies
+      button.btn.btn-danger(type='submit') Delete

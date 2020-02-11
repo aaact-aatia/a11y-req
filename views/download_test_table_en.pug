@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    style
+      include download.css
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+    .WordSection1
+      h1= title
+      
+      include includes/scope
+      
+      table.table.table-bordered(alt='Testable requirements')
+        thead
+          tr.active
+            th(scope='col') EN 301 549 (2018) clauses
+            th(scope='col') Determination of compliance
+        tbody
+          each item in test_list
+            tr
+              td(valign='top')
+                strong #{item.number} #{item.name}
+                | !{item.description}
+              td(valign='top')
+                strong C.#{item.number} #{item.name}
+                | !{item.compliance}

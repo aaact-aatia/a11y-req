@@ -1,0 +1,33 @@
+fieldset.download-links
+  legend
+    span.field-name Download documents
+  button.btn.btn-link(type='submit' formaction='download_full_en') Full requirements table with informative sections (English)
+  br
+  button.btn.btn-link(type='submit' formaction='download_full_fr') Full requirements table with informative sections (French)
+  br
+  button.btn.btn-link(type='submit' formaction='download_test_table_en') Testable requirements and determination of compliance table (English)
+  br
+  button.btn.btn-link(type='submit' formaction='download_test_table_fr') Testable requirements and determination of compliance table (French)
+  br
+  button.btn.btn-link(type='submit' formaction='download_clause_details_en') Headered requirements with details (English)
+  br
+  button.btn.btn-link(type='submit' formaction='download_clause_details_fr') Headered requirements with details (French)
+  //- br
+  //- button.btn.btn-link(type='submit' formaction='download_clause_list_en') Nested list of requirements, no details (English)
+  //- br
+  //- button.btn.btn-link(type='submit' formaction='download_clause_list_fr') Nested list of requirements, no details (French)
+
+.document-properties
+  details
+    summary Document properties
+    fieldset
+      legend
+        span.field-name Page orientation
+      .radio
+        label(for='orientation1')
+          input(type='radio' name='orientation' value='portrait' id='orientation1')
+          | Portrait
+      .radio
+        label(for='orientation2')
+          input(type='radio' name='orientation' value='landscape' id='orientation2' checked)
+          | Landscape

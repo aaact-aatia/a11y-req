@@ -1,0 +1,10 @@
+//- Passed argument is breadcrumbs: [{url, text}]
+
+if breadcrumbs
+  nav#wb-bc(property='breadcrumb')
+    h2 You are here:
+    .container
+      ol.breadcrumb
+        each item in breadcrumbs
+          li
+            a(href=item.url)= item.text

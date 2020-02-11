@@ -1,0 +1,28 @@
+doctype html
+html(lang='fr')
+  head
+    title= title
+    meta(charset='utf-8')
+    style
+      include download.css
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+    .WordSection1
+      h1= title
+      
+      include includes/scope_fr
+      
+      table.table.table-bordered(alt='Testable requirements')
+        thead
+          tr.active
+            th(scope='col') Clauses de la norme EN 301 549 2018
+            th(scope='col') Détermination de la conformité
+        tbody
+          each item in test_list
+            tr
+              td(valign='top')
+                strong #{item.number} #{item.frName}
+                | !{item.frDescription}
+              td(valign='top')
+                strong C.#{item.number} #{item.frName}
+                | !{item.frCompliance}

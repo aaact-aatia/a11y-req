@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    style
+      include download.css
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+    .WordSection1
+      h1= title
+      
+      include includes/scope
+      
+      each item in item_list
+        h2 #{item.number} #{item.name}
+        p !{item.description}

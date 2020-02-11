@@ -1,0 +1,38 @@
+extends item_form
+
+block form
+  -var itemExists = item!==undefined
+
+  form(method='POST' action='')
+    .form-group
+      label.required(for='name')
+        span.field-name Section title (English) 
+        strong.required (required)
+      input#name.form-control(type='text' placeholder='' required='required' name='name' value=(itemExists ? item.name : ''))
+    .form-group
+      label.required(for='frName')
+        span.field-name Section title (French) 
+        strong.required (required)
+      input#frName.form-control(lang='fr' type='text' placeholder='' required='required' name='frName' value=(itemExists ? item.frName : ''))
+    .checkbox
+      label(for='showHeading')
+        input#showHeading(type='checkbox' name='showHeading' checked=(itemExists ? item.showHeading : 'checked'))
+        | Display section title as a heading
+    .form-group
+      label(for='bodyHtml')
+        span.field-name Content (English) 
+      textarea#bodyHtml.form-control(name='bodyHtml' rows='10')
+        if itemExists
+          | #{item.bodyHtml}
+    .form-group
+      label(for='frBodyHtml')
+        span.field-name Content (French) 
+      textarea#frBodyHtml.form-control(lang='fr' name='frBodyHtml' rows='10')
+        if itemExists
+          | #{item.frBodyHtml}
+    .form-group
+      label(for='order')
+        span.field-name Order (1 comes before 2, etc.)
+      input#order.form-control(type='text' placeholder='' name='order' value=(itemExists ? item.order : ''))
+      
+    button.btn.btn-primary(type='submit') Submit

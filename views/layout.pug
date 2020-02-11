@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+
+    meta(charset='utf-8')
+    meta(content='width=device-width, initial-scale=1' name='viewport')
+    
+    link(href='/GCWeb/assets/favicon.ico' rel='icon' type='image/x-icon')
+    link(rel='stylesheet' href='/GCWeb/css/theme.min.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+
+    ul#wb-tphp
+      li.wb-slc
+        a.wb-sl(href="#wb-cont") Skip to main content
+
+    header
+      include includes/header.pug
+      include includes/breadcrumbs.pug
+
+    main(property="mainContentOfPage" class="container")
+      block content
+
+    footer#wb-info
+      .brand
+        .container
+          .row
+            nav.col-md-9.col-lg-10.ftr-urlt-lnk
+              h2.wb-inv About this site
+              p This tool is a prototype and has a number of 
+                a(href='https://github.com/aaact-aatia/a11y-req#known-issues') known issues
+                | . If you encounter further problems, please 
+                a(href='https://github.com/aaact-aatia/a11y-req/issues') open an issue on GitHub
+                |  (preferable) or email 
+                a(href='mailto:jules.kuehn@canada.ca') jules.kuehn@canada.ca
+                |  for support.
+            .col-xs-6.visible-sm.visible-xs.tofpg
+              a(href='#wb-cont')
+                | Top of Page 
+                span.glyphicon.glyphicon-chevron-up
+            .col-xs-6.col-md-3.col-lg-2.text-right
+              img(src='./GCWeb/assets/wmms-blk.svg', alt='Symbol of the Government of Canada')
+
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js")
+    script(src="/wet-boew/js/wet-boew.min.js")
+    script(src="/GCWeb/js/theme.min.js")
+    script(src="/ckeditor.js")
+    script(src="/aria-tree.js")
+    script(src="/mappings.js")
+    script(src="/a11y-req.js")

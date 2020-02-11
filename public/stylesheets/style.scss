@@ -1,0 +1,215 @@
+// Make changes in style.scss (not style.css)
+
+.form-control {
+  width: 100%;
+}
+
+main {
+  padding-bottom: 30px;
+}
+
+.right {
+  float: right;
+}
+
+.document-properties {
+  margin-top: 10px;
+}
+
+p.form-instructions-link {
+  height: 0;
+  margin-bottom: 0;
+}
+
+// WET Overrides
+
+.form-control {
+  height: auto;
+  min-height: 37px; // Hard-coded height fails Resize Text criterion
+}
+
+legend {
+  float: none;
+  margin-bottom: 0;
+}
+
+fieldset {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.btn-group {
+  margin-top: 15px;
+}
+
+.tgl-panel {
+  overflow: hidden;
+}
+
+button.btn.btn-link {
+  font-size: 17px;
+}
+
+.modal-body textarea {
+  width: 100%;
+  height: 200px;
+}
+
+#wb-info a {
+  font-size: 1em;
+}
+
+// Clause tree (from ARIA example with minor edits)
+
+ul[role="tree"] {
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul[role='group'] {
+  padding-left: 20px;
+}
+
+[role='treeitem'] {
+  list-style: none;
+}
+
+[role="treeitem"][aria-expanded="false"] > ul {
+  display: none;
+}
+
+[role="treeitem"][aria-expanded="true"] > ul {
+  display: block;
+}
+
+[role="treeitem"] i {
+  display: none;
+  width: 20px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  cursor: pointer;
+  background-size: 16px 16px;
+}
+
+i.expand {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%222048%22%20height%3D%222048%22%20viewBox%3D%220%200%202048%202048%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1491%201005l-742%20742q-19%2019-45%2019t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19%2045-19t45%2019l742%20742q19%2019%2019%2045t-19%2045z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+i.collapse {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%222048%22%20height%3D%222048%22%20viewBox%3D%220%200%202048%202048%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1811%20936l-742%20741q-19%2019-45%2019t-45-19l-742-741q-19-19-19-45.5t19-45.5l166-165q19-19%2045-19t45%2019l531%20531%20531-531q19-19%2045-19t45%2019l166%20165q19%2019%2019%2045.5t-19%2045.5z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+i.info {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%222048%22%20height%3D%222048%22%20viewBox%3D%220%200%202048%202048%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1280%201504v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14%200-23%209t-9%2023v160q0%2014%209%2023t23%209h96v320h-96q-14%200-23%209t-9%2023v160q0%2014%209%2023t23%209h448q14%200%2023-9t9-23zm-128-896v-160q0-14-9-23t-23-9h-192q-14%200-23%209t-9%2023v160q0%2014%209%2023t23%209h192q14%200%2023-9t9-23zm640%20416q0%20209-103%20385.5t-279.5%20279.5-385.5%20103-385.5-103-279.5-279.5-103-385.5%20103-385.5%20279.5-279.5%20385.5-103%20385.5%20103%20279.5%20279.5%20103%20385.5z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+[role="treeitem"] summary {
+  display: inline-block;
+  list-style-type: none;
+}
+
+[role="treeitem"] summary:focus,
+[role="treeitem"] summary:hover {
+  background: inherit;
+  color: inherit;
+}
+
+[role="treeitem"].endNode > .checkbox > i.info {
+  position: absolute;
+  left: 0px;
+  top: 6px;
+  height: 18px;
+}
+
+[role="treeitem"].endNode label {
+  // Prevent overlapping with "info" icon
+  padding-right: 25px;
+}
+
+[role="treeitem"].endNode.hover > .checkbox > i.info,
+[role="treeitem"].endNode > .checkbox:hover > i.info,
+[role="treeitem"].endNode.focus > .checkbox > i.info,
+[role="treeitem"].endNode > .checkbox:focus > i.info {
+  display: inline-block;
+}
+
+[role="treeitem"][aria-expanded="false"] > div.checkbox > i.expand,
+[role="treeitem"][aria-expanded="true"] > div.checkbox > i.collapse {
+  display: inline-block;
+}
+
+[role="treeitem"].focus,
+[role="treeitem"] div.focus,
+[role="treeitem"].focus div.checkbox:hover,
+[role="treeitem"] div.checkbox.focus:hover,
+[role="treeitem"] div.checkbox.focus.hover,
+[role="treeitem"] div.focus:hover {
+  background-color: #eee;
+  // outline: solid 2px #666;
+}
+
+[role="treeitem"] div.checkbox.hover,
+[role="treeitem"] div.checkbox:hover {
+  background-color: #fafafa;
+}
+
+[role="treeitem"] .detail-inner p:last-child {
+  margin: 0;
+}
+
+[role="treeitem"] .detail-inner {
+  background: #fff;
+  overflow: hidden;
+  font-size: 14px;
+  border-left: solid 2px #666;
+  margin: 10px 22px;
+  padding: 3px 5px 3px 10px;
+  display: none;
+}
+
+
+[role="treeitem"][aria-expanded='true'] > .checkbox > .detail-inner {
+  display: block;
+}
+
+[role="treeitem"].informative label,
+[role="treeitem"].informative input {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.clause-tree .checkbox {
+  margin: 0;
+  padding: 5px 0 5px 20px;
+}
+
+.clause-tree .checkbox input[type="checkbox"] {
+  position: relative;
+  margin-right: 10px;
+}
+
+.clause-tree .checkbox .detail-inner * {
+  padding-left: auto !important;
+}
+
+// Wizard styling
+
+$color-focus: #1c578a;
+
+#wizard label {
+  padding: 2px 5px 2px 25px;
+}
+
+#wizard .checkbox.focus,
+#wizard .checkbox:focus {
+  background-color: #eee;
+}
+
+#wizard input:focus {
+  background-color: none;
+}

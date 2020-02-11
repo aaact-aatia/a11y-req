@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1#wb-cont(property="name")= title
+  ul
+    each item in item_list
+      li
+        if type === 'clause'
+          a(href=item.url) #{item.number} #{item.name}
+        else
+          a(href=item.url) #{item.name}
+
+    else
+      li There are no #{type}s to display.
+
+  a(href='/edit/' + type + '/create') Create #{type}

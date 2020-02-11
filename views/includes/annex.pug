@@ -1,0 +1,9 @@
+each item in annex
+  if item.showHeading 
+    .infoHeading
+      h2 #{item.name}
+  .infoBody
+    | !{item.bodyHtml}
+  
+else
+  li There are no annex sections to display.

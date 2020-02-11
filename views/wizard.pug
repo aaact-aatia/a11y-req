@@ -1,0 +1,134 @@
+extends layout
+
+block content
+  h1#wb-cont(property='name')= title
+  //- h3 About
+  p Use this tool to generate requirements documents specific to the Information Communication Technology (ICT) you are procuring. Requirements are based on the  EN 301 549 V2.1.2 (2018-08).
+  //- h3 Instructions
+  //- ol
+  //-   li Answer questions under 'Does the ICT include:' in the order they are listed.
+  //-   ul
+  //-     li Based on your responses, relevant requirements from the EN 301 549 will automatically be selected.
+  //-   li If necessary, fine tune the requirements by manually selecting 'Required clauses'.
+  //-   li Click the 'Generate requirements' button.
+  //-   ul
+  //-     li Documents will be generated which include only the required clauses.
+  //-   li On the next page, download the generated ICT accessibility requirements documents.
+  //-   li Give the requirements documents unique names and append them to your RFx.
+
+  -// Wizard logic is contained in a11y-req.js
+  hr
+
+  form(novalidate='novalidate' method='POST' action='')
+    .row
+      .wb-tabs
+        .tabpanels
+          details#details-step1
+            summary Step 1: Define ICT functionality
+            p.form-instructions-link
+              a.overlay-lnk.right(href='#instructionsStep1' aria-controls='instructionsStep1' role='button' title='Step 1 instructions') Instructions: Step 1
+            include includes/wizard_form
+            a.btn.btn-default.wb-tabs-ext.right(href='#details-step2') Next
+          details#details-step2
+            summary Step 2: Refine clause selection
+            p.form-instructions-link
+              a.overlay-lnk.right(href='#instructionsStep2' aria-controls='instructionsStep2' role='button' title='Step 2 instructions') Instructions: Step 2
+            include includes/clause_tree
+            a.btn.btn-default.overlay-lnk(href='#clauseListModal' aria-controls='clauseListModal' role='button' title='Resume editing by pasting a previously generated requirements list') Enter clause list
+            a.btn.btn-default.wb-tabs-ext.right(href='#details-step3') Next
+          details#details-step3
+            summary Step 3: Generate requirements documents
+            p.form-instructions-link
+              a.overlay-lnk.right(href='#instructionsStep3' aria-controls='instructionsStep3' role='button' title='Step 3 instructions') Instructions: Step 3
+            include includes/download_chooser
+
+  section.wb-overlay.modal-content.overlay-def.wb-popup-mid#instructionsStep1
+    header.modal-header
+      h2.modal-title Instructions: Step 1
+    .modal-body
+      p Select all checkboxes which apply to the ICT being procured, even those which appear redundant.
+      p
+        | Note that the procured product / service must itself 
+        strong provide
+        |  the component or feature. For example, consider the case of procuring e-learning services:
+      ol
+        li
+          p The statement of work specifies that the supplier must use a certain video-conferencing platform.
+          p "Two-way communication" and "Two-way video communication" requirements should not be selected (since these functions are not provided by the supplier as part of this procurement).
+        li
+          p The statement of work includes a learning management system with content-editing abilities, to be chosen or developed by the supplier.
+          p "Authoring tools" should be selected (since the supplier is providing content authoring functionality as part of this procurement).
+      p When you are satisfied that your selection is correct, proceed to Step 2 by using the navigation tabs or the "Next" button. Further instructions are available within each tab.
+
+      
+  section.wb-overlay.modal-content.overlay-def.wb-popup-mid#instructionsStep2
+    header.modal-header
+      h2.modal-title Instructions: Step 2
+    .modal-body
+      p
+        | Relevant requirements (clauses) have now been selected based on your answers in Step 1. Use the checkbox tree to inspect which clauses have been selected. Make sure that they apply to your procurement.
+      h3 When should you deselect a clause?
+      p
+        | Only deselect the clauses that you are certain will not be part of the procured product / service. Err on the side of including any requirement that may be necessary. Individual clauses can be marked "not applicable" by suppliers, so it isn't a problem to include an inapplicable clause.
+      p
+        | For example, consider procuring a web application. Web content may include video or audio. Even if the statement of work does not require multimedia content, some suppliers may use multimedia for instructions on how to use the application. In this case, do not deselect clause 9.1.2 "Time based media".
+      p
+        | In general, include all requirements in clause 9 or 10 rather than selecting only a portion of them.
+      h3 Using the clause tree
+      ul
+        li To expand or collapse parts of the tree with the mouse, click the arrow next to the clause you wish to expand. Or, click in the blank space next to the clause name.
+        li To expand or collapse with the keyboard, use the arrow keys. The up and down arrows will move between clauses, while the right and left arrows will expand and collapse clauses.
+        li Clauses with no children are the only ones that contain actual requirement text (for example, clause 5.2). These can be expanded to reveal the text in the same manner as the parent clauses.
+        li To select or deselect a clause, click the checkbox or press the spacebar. When a parent clause is selected (for example, clause 5), all of its children will be selected.
+      h3 Making changes to previously generated requirements
+      p
+        | Each generated document includes a succinct "clause list", which is a single sentence listing all clauses included in that document. It looks something like this:
+      p
+        | "The offered solution should comply with clauses 5.1.2.1, 5.1.2.2, 5.1.3.1, 12.1.1 and 12.1.2."
+      p
+        | You may have spent considerable time refining your clause selection. After generating documents, you closed this web page. The next day, you realize that modifications are required. A function is provided to do this easily.
+      p
+        | Activate the "Enter clause list" button located after the clause tree. Copy the clause list from your previously generated document and paste it in the form field. Your previous clause selection will be restored in the checkbox tree. You can then make any required modifications to the selection.
+      
+  section.wb-overlay.modal-content.overlay-def.wb-popup-mid#instructionsStep3
+    header.modal-header
+      h2.modal-title Instructions: Step 3
+    .modal-body
+      p Click the links to download requirements documents. For most procurements, the "Full requirements table with informative sections" is the right choice.
+      p You may wish to give the documents more descriptive filenames after downloading.
+      h3 Necessary modifications to Word documents
+      p
+        | Due to 
+        a(href='https://github.com/juleskuehn/a11y-req#user-content-known-issues') limitations of the tool
+        |  you should perform the following steps after downloading the documents.
+      h4 English document
+      ol
+        li Open the generated English document in Microsoft Word.
+        li Under File &gt; Info, click Convert.
+        li Insert page breaks before each Annex. If applicable, insert page breaks to keep figures with their corresponding captions.
+        li Save and close the English document.
+      h4 French document
+      ol
+        li Open the generated French document in Microsoft Word.
+        li Under File &gt; Info, click Convert.
+        li Insert page breaks before each Annex. If applicable, insert page breaks to keep figures with their corresponding captions.
+        li Select all and set the language to French. To set the language, either click the language in the status bar, or follow these steps:
+          ol(type='a')
+            li In the ribbon, select the Review tab.
+            li Select Language &gt; Set Proofing Language.
+            li Select the desired language.
+        li The French document contains some English text, which should remain in English. Select the following English sections (found in the Annexes) and set the language to English:
+          ul
+            li References
+            li Abbreviations
+          | Make sure that the notes (which are in French) are not set to English.
+        li Save and close the French document.
+
+  section.wb-overlay.modal-content.overlay-def.wb-popup-mid#clauseListModal
+    header.modal-header
+      h2.modal-title Enter clause list
+    .modal-body
+      p Paste the clause list from a previously generated document to resume editing your selection.
+      p The clause list is a single sentence which looks something like this:
+      p "The offered solution should comply with clauses 5.1.2.1, 5.1.2.2, 5.1.3.1, 12.1.1 and 12.1.2."
+      textarea.no-editor#clauseList

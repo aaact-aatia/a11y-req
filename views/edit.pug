@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1#wb-cont(property="name")= title
+  p Note: The rich text editor is accessible apart from table and image editing. The inaccessible features are only needed to edit "Annex - Tables and Figures". As a workaround, use Internet Explorer 11 to perform the editing in plain text (HTML).
+  a(href='/edit/infos') Edit informative sections
+  br
+  a(href='/edit/clauses') Edit functional accessibility requirements (Clauses 5 - 13)
+  //- br
+  //- a(href='/edit/presets') Edit commodity presets
