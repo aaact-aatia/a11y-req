@@ -1,0 +1,45 @@
+-var i = 0
+
+mixin checkbox(label, name)
+  if name === undefined
+    -name = 'checkbox' + i++
+  .checkbox
+      label(for=name)
+        input(id=name type='checkbox' name=name)
+        | !{label}
+
+section#wizard
+  //- p
+  //-   strong Instructions: 
+  //-   | Check all that may apply to the ICT you are procuring.
+  fieldset
+    legend
+      span.field-name L’approvisionnement en <abbr title="Technologies de l'information et de la communication">TIC</abbr> fournit-il ce qui suit :
+    .row
+      .col-md-6
+        +checkbox('Composants physiques (matériels) côté utilisateur', 'hardware')
+        +checkbox('Matériel côté utilisateur intégré dans l’environnement (p. ex. kiosque libre-service installé en permanence ou grand photocopieur impossible à déplacer)', 'integrated')
+        +checkbox('Sites Web, applications Web ou documents HTML', 'web')
+        +checkbox('Documents autres que HTML', 'non-web-docs')
+        +checkbox('Logiciel plateforme (p. ex. un système d’exploitation)', 'platform')
+        +checkbox('Logiciel qui offre une interface  utilisateur en dehors du navigateur ', 'ui')
+        +checkbox('Logiciel de technologie adaptée (d’assistance)', 'at')
+        +checkbox('Documentation de produit ', 'documentation')
+        +checkbox('Services techniques', 'support')
+        +checkbox('Fonctions d’accessibilité documentées', 'a11y')
+        +checkbox('Transmission bidirectionnelle (tout support)', 'comm')
+        +checkbox('Communication vocale bidirectionnelle', 'voice-comm')
+        +checkbox('Communication vidéo bidirectionnelle', 'video-comm')
+        +checkbox('Authentification ou contrôle biométrique', 'bio')
+      .col-md-6
+        +checkbox('Fonctionnalité proche des technologies adaptées (p. ex. un système où aucun logiciel de lecture d’écran ne peut être installé)', 'closed')
+        +checkbox('Conversion de l’information entre formats électroniques', 'conversion')
+        +checkbox('Lecture vidéo, vidéotransmission, conversion vidéo ou enregistrement vidéo (avec audio synchronisé)', 'video-sync')
+        +checkbox('Matériel avec sortie de parole', 'speech-output')
+        +checkbox('Services de relais (p. ex. service de téléphonie à sous-titrage)', 'relay')
+        +checkbox('Outils-auteurs (p. ex. logiciel de traitement de texte ou SGCW)', 'authoring')
+        +checkbox('Dispositif de communication fixe normalement tenu à l’oreille et portant le symbole « T »', 't-coil')
+        +checkbox('Dispositif de communication sans fil normalement tenu à l’oreille', 'mobile-phone')
+        +checkbox('Fonctionnalité conçue pour une utilisation partagée', 'shared')
+        +checkbox('Clés de provisionnement, billets ou cartes de transport, où leur orientation est importante pour utilisation ultérieure', 'keys')
+        +checkbox('Principale fonctionnalité d’afficher les documents contenant des vidéos et du contenu audio connexe', 'video-player')

@@ -1,0 +1,48 @@
+//- Functions to generate clause tree
+
+mixin fpsCheckbox(clause, selected, endNode)
+  .checkbox
+    if endNode
+      i.info
+    else
+      i.expand
+      i.collapse
+    label(for=clause.id)
+      input(id=clause.id type='checkbox' name='clauses' data-number=clause.number value=clause.id class=clause.informative ? 'informative' : '' checked=selected tabindex='-1' aria-hidden='true')
+      span.number #{clause.number} 
+      span.name #{clause.frName}
+    if endNode
+      .detail-inner
+        | !{clause.frDescription}
+
+mixin createTree(tree)
+  each clauseNode in tree
+    -var selected = itemExists && item.clauses.indexOf(clauseNode.clause.id) > -1 ? 'checked' : false
+    if clauseNode.children.length === 0
+      //- Add aria-checked properties via javascript (need to check for mixed state)
+      li.endNode(role='treeitem' class=clauseNode.clause.informative ? 'informative' : '' aria-expanded='false')
+        +fpsCheckbox(clauseNode.clause, selected, true)
+    else
+      li.parentNode(role='treeitem' aria-expanded='false')
+        //- Should parent checkboxes have aria-controls attribute?
+        +fpsCheckbox(clauseNode.clause, selected, false)
+        ul(role='group')
+          +createTree(clauseNode.children)
+
+//- Passed argument is tree-like JS object 'clause_tree'
+//- See /controllers/clauseTree.js for details
+
+fieldset#clauses
+  legend
+    span#tree_label.field-name Clauses requises
+  .btn-group
+    //- button.btn.btn-default#selectAll Select all 
+    //- button.btn.btn-default#selectNone Select none
+    button.btn.btn-default#expandTree Arboriser
+    button.btn.btn-default#expandAll Développer tout
+    button.btn.btn-default#collapseAll Réduire tout
+  //- aria-labelledby is not be necessary due to the fieldset legend
+  //- aria-selectable='false' is not ideal, but the treeitems need aria-checked
+  //- property rather than aria-selected (to express 'mixed' state)
+  ul.clause-tree(role='tree' aria-selectable='false')
+    +createTree(clause_tree)

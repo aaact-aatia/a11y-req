@@ -25,6 +25,19 @@ exports.wizard_get = (req, res, next) => {
   });
 };
 
+// Select functional accessibility requirements or preset
+exports.wizard_fr_get = (req, res, next) => {
+  async.parallel({
+    clauses: (callback) => Clause.find().exec(callback)
+  }, (err, results) => {
+    if (err) { return next(err); }
+    res.render('wizard_fr', {
+      title: 'Assistant des exigences d\'accessibilité des TIC',
+      clause_tree: toClauseTree(results.clauses)
+    });
+  });
+};
+
 exports.download = (req, res, next) => {
   let strings = { template: req.params.template };
   if (req.params.template.slice(-2) === 'fr') {

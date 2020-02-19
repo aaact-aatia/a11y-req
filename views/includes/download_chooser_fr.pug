@@ -1,0 +1,33 @@
+fieldset.download-links
+  legend
+    span.field-name Télécharger les documents
+  button.btn.btn-link(type='submit' formaction='/download_full_en') Tableau complet des exigences avec sections instructives (en anglais)
+  br
+  button.btn.btn-link(type='submit' formaction='/download_full_fr') Tableau complet des exigences avec sections instructives (en français)
+  br
+  button.btn.btn-link(type='submit' formaction='/download_test_table_en') Exigences testables et détermination du tableau de conformité (en anglais)
+  br
+  button.btn.btn-link(type='submit' formaction='/download_test_table_fr') Exigences testables et détermination du tableau de conformité (en français)
+  br
+  button.btn.btn-link(type='submit' formaction='/download_clause_details_en') Exigences avec en-tête et détails (en anglais)
+  br
+  button.btn.btn-link(type='submit' formaction='/download_clause_details_fr') Exigences avec en-tête et détails (en français)
+  //- br
+  //- button.btn.btn-link(type='submit' formaction='download_clause_list_en') Nested list of requirements, no details (English)
+  //- br
+  //- button.btn.btn-link(type='submit' formaction='download_clause_list_fr') Nested list of requirements, no details (French)
+
+.document-properties
+  details
+    summary Propriétés de document
+    fieldset
+      legend
+        span.field-name Orientation de la page
+      .radio
+        label(for='orientation1')
+          input(type='radio' name='orientation' value='portrait' id='orientation1')
+          | Format vertical
+      .radio
+        label(for='orientation2')
+          input(type='radio' name='orientation' value='landscape' id='orientation2' checked)
+          | Format horizontal
