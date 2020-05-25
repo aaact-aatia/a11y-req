@@ -1,0 +1,53 @@
+doctype html
+html(lang='fr')
+  head
+    title= title
+
+    meta(charset='utf-8')
+    meta(content='width=device-width, initial-scale=1' name='viewport')
+    
+    link(href='/GCWeb/assets/favicon.ico' rel='icon' type='image/x-icon')
+    link(rel='stylesheet' href='/GCWeb/css/theme.min.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+
+    ul#wb-tphp
+      li.wb-slc
+        a.wb-sl(href="#wb-cont") Passer au contenu principal
+
+    header
+      include includes/header_fr.pug
+      include includes/breadcrumbs.pug
+
+    main(property="mainContentOfPage" class="container")
+      block content
+
+    footer#wb-info
+      .brand
+        .container
+          .row
+            nav.col-md-9.col-lg-10.ftr-urlt-lnk
+              h2.wb-inv À propos de ce site
+              p Cet outil est un prototype et présente un certain nombre de 
+                a(href='https://github.com/aaact-aatia/a11y-req#known-issues') problèmes connus (en anglais seulement)
+                | . Si vous rencontrez d’autres problèmes, veuillez 
+                a(href='https://github.com/aaact-aatia/a11y-req/issues') signaler le problème sur GitHub (en anglais seulement) 
+                |  (de préférence) ou envoyer un courriel à 
+                a(href='mailto:jules.kuehn@canada.ca') jules.kuehn@canada.ca
+                |  pour obtenir de l’aide.
+            .col-xs-6.visible-sm.visible-xs.tofpg
+              a(href='#wb-cont')
+                | Top of Page 
+                span.glyphicon.glyphicon-chevron-up
+            .col-xs-6.col-md-3.col-lg-2.text-right
+              img(src='/GCWeb/assets/wmms-blk.svg', alt='Symbole du gouvernement du Canada')
+
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js")
+    script(src="/wet-boew/js/wet-boew.min.js")
+    script(src="/GCWeb/js/theme.min.js")
+    script(src="/ckeditor.js")
+    script(src="/aria-tree.js")
+    script(src="/mappings.js")
+    script(src="/a11y-req.js")

@@ -1,22 +1,8 @@
-extends layout
+extends layout_fr
 
 block content
   h1#wb-cont(property='name')= title
-  //- h3 About
   p Utilisez cet outil pour générer des documents d'exigences spécifiques aux technologies de l'information et de la communication (TIC) que vous achetez. Les exigences sont basées sur l'EN 301549 V2.1.2 (2018-08).
-  //- h3 Instructions
-  //- ol
-  //-   li Answer questions under 'Does the ICT include:' in the order they are listed.
-  //-   ul
-  //-     li Based on your responses, relevant requirements from the EN 301 549 will automatically be selected.
-  //-   li If necessary, fine tune the requirements by manually selecting 'Required clauses'.
-  //-   li Click the 'Generate requirements' button.
-  //-   ul
-  //-     li Documents will be generated which include only the required clauses.
-  //-   li On the next page, download the generated ICT accessibility requirements documents.
-  //-   li Give the requirements documents unique names and append them to your RFx.
-
-  -// Wizard logic is contained in a11y-req.js
   hr
 
   form(novalidate='novalidate' method='POST' action='')
@@ -44,91 +30,96 @@ block content
 
   section.wb-overlay.modal-content.overlay-def.wb-popup-mid#instructionsStep1
     header.modal-header
-      h2.modal-title Instructions: Step 1
+      h2.modal-title Instructions : Étape 1
     .modal-body
-      p Select all checkboxes which apply to the ICT being procured, even those which appear redundant.
+      p Cochez toutes les cases qui s’appliquent aux TIC que vous achetez, même celles qui semblent redondantes.
       p
-        | Note that the procured product / service must itself 
-        strong provide
-        |  the component or feature. For example, consider the case of procuring e-learning services:
+        | Prenez note que le produit / service acheté doit lui-même 
+        strong fournir
+        |  le composant ou la caractéristique. Par exemple, prenez en considération le cas de l’acquisition de service d’apprentissage en ligne :
       ol
         li
-          p The statement of work specifies that the supplier must use a certain video-conferencing platform.
-          p "Two-way communication" and "Two-way video communication" requirements should not be selected (since these functions are not provided by the supplier as part of this procurement).
+          p L’énoncé des travaux précise que le fournisseur doit utiliser une certaine plate-forme de vidéoconférence.
+          p Les exigences de « communication bidirectionnelle » et de « communication vidéo bidirectionnelle » ne devraient pas être sélectionnées (puisque ces fonctions ne sont pas fournies par le fournisseur dans le cadre de ce marché).
         li
-          p The statement of work includes a learning management system with content-editing abilities, to be chosen or developed by the supplier.
-          p "Authoring tools" should be selected (since the supplier is providing content authoring functionality as part of this procurement).
-      p When you are satisfied that your selection is correct, proceed to Step 2 by using the navigation tabs or the "Next" button. Further instructions are available within each tab.
+          p L’énoncé des travaux comprend un système de gestion de l’apprentissage avec des capacités de mise en forme du contenu, qui doit être choisi ou élaboré par le fournisseur.
+          p Les « systèmes auteurs » devraient être sélectionnés (puisque le fournisseur fournit les fonctions de création de contenu dans le cadre de ce marché).
+      p Lorsque vous êtes satisfait de votre sélection, passez à l’étape 2 en utilisant les onglets de navigation ou le bouton « Prochain ». Des directives supplémentaires sont disponibles à chaque onglet.
 
       
   section.wb-overlay.modal-content.overlay-def.wb-popup-mid#instructionsStep2
     header.modal-header
-      h2.modal-title Instructions: Step 2
+      h2.modal-title Instructions : Étape 2
     .modal-body
       p
-        | Relevant requirements (clauses) have now been selected based on your answers in Step 1. Use the checkbox tree to inspect which clauses have been selected. Make sure that they apply to your procurement.
-      h3 When should you deselect a clause?
+        | Les exigences (clauses) pertinentes ont maintenant été sélectionnées en fonction de vos réponses à l’étape 1. Utilisez l’arbre des cases à cocher pour vérifier quelles clauses ont été sélectionnées. Assurez-vous qu’elles s’appliquent à votre marché.
+      h3 Quand devriez-vous désélectionner une clause?
       p
-        | Only deselect the clauses that you are certain will not be part of the procured product / service. Err on the side of including any requirement that may be necessary. Individual clauses can be marked "not applicable" by suppliers, so it isn't a problem to include an inapplicable clause.
+        | Ne désélectionnez que les clauses dont vous êtes certain qu’elles ne font pas partie du produit / service acheté. Vous pouvez inclure toute exigence qui pourrait être nécessaire. Les clauses individuelles peuvent être marquées « sans objet » par les fournisseurs; ce n’est donc pas un problème que d’inclure une clause non applicable.
       p
-        | For example, consider procuring a web application. Web content may include video or audio. Even if the statement of work does not require multimedia content, some suppliers may use multimedia for instructions on how to use the application. In this case, do not deselect clause 9.1.2 "Time based media".
+        | Par exemple, si vous considérez l’achat d’une application Web. Le contenu Web peut inclure de la vidéo ou de l’audio. Même si l’énoncé des travaux n’exige pas de contenu multimédia, certains fournisseurs peuvent utiliser les multimédias pour les directives d’utilisation de l’application. Gardez la clause 9.1.2 « Médias en fonction du temps » sélectionnée.
       p
-        | In general, include all requirements in clause 9 or 10 rather than selecting only a portion of them.
-      h3 Using the clause tree
+        | En général, vous devriez inclure toutes les exigences dans la clause 9 ou 10 plutôt que d’en sélectionner seulement une partie.
+      h3 Utilisation de l’arbre à clauses
       ul
-        li To expand or collapse parts of the tree with the mouse, click the arrow next to the clause you wish to expand. Or, click in the blank space next to the clause name.
-        li To expand or collapse with the keyboard, use the arrow keys. The up and down arrows will move between clauses, while the right and left arrows will expand and collapse clauses.
-        li Clauses with no children are the only ones that contain actual requirement text (for example, clause 5.2). These can be expanded to reveal the text in the same manner as the parent clauses.
-        li To select or deselect a clause, click the checkbox or press the spacebar. When a parent clause is selected (for example, clause 5), all of its children will be selected.
-      h3 Making changes to previously generated requirements
+        li Pour développer ou réduire des parties de l’arbre à l’aide de la souris, cliquez sur la flèche à côté de la clause que vous souhaitez développer. Ou cliquez dans l’espace vide à côté du nom de la clause.
+        li Pour développer ou réduire une partie à l’aide du clavier, utilisez les touches fléchées. Les flèches haut et bas permettent de passer d’une clause à l’autre, tandis que les flèches droite et gauche permettent de développer et de réduire les clauses.
+        li Les clauses sans clause subordonnée sont les seules qui contiennent le texte de l’exigence réelle (par exemple, la clause 5.2). Elles peuvent être développées pour faire apparaître le texte de la même manière que les clauses principales.
+        li Pour sélectionner ou désélectionner une clause, cliquez sur la case à cocher ou appuyez sur la barre. Lorsqu’une clause principale est sélectionnée (par exemple, la clause 5), toutes ses clauses subordonnées seront sélectionnées.
+      h3 Apporter des modifications aux exigences générées précédemment
       p
-        | Each generated document includes a succinct "clause list", which is a single sentence listing all clauses included in that document. It looks something like this:
+        | Chaque document généré comprend une « liste de clauses » succincte, c’est-à-dire une seule phrase énumérant toutes les clauses incluses dans ce document. Voici à quoi cela ressemble :
       p
-        | "The offered solution should comply with clauses 5.1.2.1, 5.1.2.2, 5.1.3.1, 12.1.1 and 12.1.2."
+        | « La solution proposée devrait être conforme aux clauses 5.1.2.1, 5.1.2.2, 5.1.3.1, 12.1.1 et 12.1.2. »
       p
-        | You may have spent considerable time refining your clause selection. After generating documents, you closed this web page. The next day, you realize that modifications are required. A function is provided to do this easily.
+        | Vous avez peut-être passé un temps considérable à affiner votre sélection de clauses. Après avoir généré des documents, vous avez fermé la page Web. Le lendemain, vous vous rendez compte que des modifications sont nécessaires. Une fonction vous permet de le faire facilement.
       p
-        | Activate the "Enter clause list" button located after the clause tree. Copy the clause list from your previously generated document and paste it in the form field. Your previous clause selection will be restored in the checkbox tree. You can then make any required modifications to the selection.
+        | Cliquez sur le bouton « Entrer la liste des clauses » situé après l’arbre des clauses. Copiez la liste des clauses de votre document précédemment généré et collez-la dans le champ du formulaire. Votre sélection de clauses précédente sera restaurée dans l’arbre des cases à cocher. Vous pouvez ensuite apporter toutes les modifications nécessaires à la sélection.
       
   section.wb-overlay.modal-content.overlay-def.wb-popup-mid#instructionsStep3
     header.modal-header
-      h2.modal-title Instructions: Step 3
+      h2.modal-title Instructions : Étape 3
     .modal-body
-      p Click the links to download requirements documents. For most procurements, the "Full requirements table with informative sections" is the right choice.
-      p You may wish to give the documents more descriptive filenames after downloading.
-      h3 Necessary modifications to Word documents
+      p Cliquez sur les liens pour télécharger les documents relatifs aux exigences. Pour la plupart des approvisionnements, le « Tableau complet des exigences avec des sections informatives » est le bon choix.
+      p Vous souhaiterez peut-être donner aux documents des noms de fichiers plus  descriptifs après le téléchargement.
+      h3 Modifications nécessaires aux documents Word
       p
-        | Due to 
-        a(href='https://github.com/juleskuehn/a11y-req#user-content-known-issues') limitations of the tool
-        |  you should perform the following steps after downloading the documents.
-      h4 English document
+        | En raison des 
+        a(href='https://github.com/juleskuehn/a11y-req#user-content-known-issues') limitations de l’outil (en anglais seulement)
+        | , vous devez effectuer chacune des étapes suivantes après avoir téléchargé les documents.
+      h4 Document anglais
       ol
-        li Open the generated English document in Microsoft Word.
-        li Under File &gt; Info, click Convert.
-        li Insert page breaks before each Annex. If applicable, insert page breaks to keep figures with their corresponding captions.
-        li Save and close the English document.
-      h4 French document
+        li Ouvrez le document anglais généré dans Microsoft Word.
+        li Sous Fichier  &gt; Informations, cliquez sur Convertir.
+        li
+          p Pour le document « Tableau complet des exigences avec des sections informatives » uniquement :
+          p Insérez des sauts de page avant chaque annexe. Le cas échéant, insérez les sauts de page pour conserver les chiffres avec leurs légendes correspondantes.
+        li Enregistrez et fermez le document.
+      h4 Document français
       ol
-        li Open the generated French document in Microsoft Word.
-        li Under File &gt; Info, click Convert.
-        li Insert page breaks before each Annex. If applicable, insert page breaks to keep figures with their corresponding captions.
-        li Select all and set the language to French. To set the language, either click the language in the status bar, or follow these steps:
+        li Ouvrez le document français généré dans Microsoft Word.
+        li Sous Fichier &gt; Informations, cliquez sur Convertir.
+        li Sélectionnez tout et définissez la langue en français. Pour définir la langue, cliquez sur la langue dans la barre d’état, ou suivez ces étapes :
           ol(type='a')
-            li In the ribbon, select the Review tab.
-            li Select Language &gt; Set Proofing Language.
-            li Select the desired language.
-        li The French document contains some English text, which should remain in English. Select the following English sections (found in the Annexes) and set the language to English:
-          ul
-            li References
-            li Abbreviations
-          | Make sure that the notes (which are in French) are not set to English.
-        li Save and close the French document.
+            li Dans le ruban, sélectionnez l’onglet Révision.
+            li Sélectionnez Langue &gt; Définir la langue de révision.
+            li Sélectionnez la langue souhaitée.
+        li Pour le document « Tableau complet des exigences avec des sections informatives » uniquement :
+          ol(type='a')
+            li Insérez les sauts de page avant chaque annexe. Le cas échéant, insérez les sauts de page pour conserver les chiffres avec leurs légendes correspondantes.
+            li
+              p Le document français contient un peu de texte anglais, qui devrait rester en anglais. Sélectionnez les sections anglaises suivantes (qui se trouvent dans les annexes) et définissez la langue en anglais :
+              ol
+                li Références
+                li Abréviations
+              p Make sure that the notes (which are in French) are not set to English.
+        li Enregistrez et fermez le document.
 
   section.wb-overlay.modal-content.overlay-def.wb-popup-mid#clauseListModal
     header.modal-header
       h2.modal-title Enter clause list
     .modal-body
-      p Paste the clause list from a previously generated document to resume editing your selection.
-      p The clause list is a single sentence which looks something like this:
-      p "The offered solution should comply with clauses 5.1.2.1, 5.1.2.2, 5.1.3.1, 12.1.1 and 12.1.2."
+      p Collez la liste de clauses à partir d'un document généré précédemment pour reprendre la modification de votre sélection.
+      p La liste des clauses est une seule phrase qui ressemble à ceci:
+      p « La solution proposée devrait être conforme aux clauses 5.1.2.1, 5.1.2.2, 5.1.3.1, 12.1.1 et 12.1.2. »
       textarea.no-editor#clauseList
