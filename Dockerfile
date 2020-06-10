@@ -54,6 +54,8 @@ COPY . .
 # install dependencies 
 RUN npm install
 
+RUN ./scripts/start.sh
+
 # make startup script executable 
 RUN chmod 777 ./scripts/start.sh 
 
