@@ -1,0 +1,25 @@
+# not to be used in production
+version: "3"
+
+services:
+    a11y:
+        build: .
+        ports:
+            - 3000:80
+        environment: 
+            - MONGODB_URI=mongodb://mongo/a11y-req
+            - BASIC_AUTH_USERNAME=admin
+            - BASIC_AUTH_PASSWORD=password
+            - POPULATE_DB=${POPULATE_DB}
+            - WAIT_HOSTS=mongo:27017
+            - WAIT_FOR_MONGO=true
+    mongo:
+        image: mongo:3.3
+        restart: always
+    
+    mogoexpress:
+        image: mongo-express
+        restart: always
+        ports: 
+            - 3005:8081
+
