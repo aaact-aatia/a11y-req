@@ -50,7 +50,7 @@ Instructions for editing the generated documents are available within the app (S
 
 ### Running Natively
 - Install node.js, npm, and MongoDB
-- Clone this repository: `git clone https://github.com/juleskuehn/a11y-req`
+- Clone this repository: `git clone https://github.com/aaact-aatia/a11y-req`
 - In the created directory, run `npm install`
 
 ### Using Docker 
@@ -68,7 +68,7 @@ A production ready container has been created for your convenience complete with
 
 ### Using Docker 
 
-To specify that the container should populate the database on start set the environment variable ```POPULATE_DB``` to be ```true```. 
+To specify that the container should populate the database on start set the environment variable ```POPULATE_DB``` to be ```true```. This variable is found in `Dockerfile`.
 The container will detect this and run mongorestore on booting. 
 
 To run the application.
