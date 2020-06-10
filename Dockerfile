@@ -2,7 +2,7 @@ FROM node:12
 
 
 ENV NODE_ENV "production"
-ENV POPULATE_DB "false"
+ENV POPULATE_DB "true"
 
 # Change me in production
 ENV MONGODB_URI "mongodb://127.0.0.1/a11y-req" 
