@@ -47,15 +47,41 @@ The above issues are primarily due to the requirement of generating Word documen
 Instructions for editing the generated documents are available within the app (Step 3 instructions).
 
 ## Setup
+
+### Running Natively
 - Install node.js, npm, and MongoDB
-- Clone this repository: `git clone https://github.com/juleskuehn/a11y-req`
+- Clone this repository: `git clone https://github.com/aaact-aatia/a11y-req`
 - In the created directory, run `npm install`
 
+### Using Docker 
+
+A production ready container has been created for your convenience complete with the PM2 process manager and a NGINX reverse proxy. 
+
+
 ## Usage
+
+### Running Natively 
 - Run `mongod` to start the database server
 - Run `mongorestore dump` to populate the database
 - Run `npm run devstart` to start the node.js server
 - Visit [localhost:3000](http://localhost:3000)
+
+### Using Docker 
+
+To specify that the container should populate the database on start set the environment variable ```POPULATE_DB``` to be ```true```. This variable is found in `Dockerfile`.
+The container will detect this and run mongorestore on booting. 
+
+To run the application.
+
+```sh
+$ docker-compose up
+```
+
+To rebuild the container 
+
+```sh
+$ docker-compose up --build
+```
 
 ## Understanding the code
 This is a CRUD application using Node, Express, MongoDB backend and Web Experience Toolkit frontend. The barebones implementation has its own repo: [wet-mongoose](https://github.com/juleskuehn/wet-mongoose).

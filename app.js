@@ -12,7 +12,10 @@ app.locals.moment = require('moment');
 
 // Database connection
 const mongoDB = process.env.MONGODB_URI || 'mongodb://127.0.0.1/a11y-req';
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -32,9 +35,12 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Simple authorization for edit routes
+const BASIC_AUTH_USERNAME = process.env.BASIC_AUTH_USERNAME || "admin";
+const BASIC_AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD || "admin";
+
 const basicAuth = auth.basic(
   { realm: "Editing requires login" },
-  (user, pass, cb) => cb(user === 'admin' && pass === 'admin')
+  (user, pass, cb) => cb(user === BASIC_AUTH_USERNAME && pass === BASIC_AUTH_PASSWORD)
 );
 
 // THE IMPORTANT PART
