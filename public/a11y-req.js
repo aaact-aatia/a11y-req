@@ -161,13 +161,18 @@ var initCK = function (element, lang) {
 /* Wizard questions */
 
 var setupWizardHandler = function () {
+
+  wizardChanged = false;
   // #preset is the <select> element (see /views/select_fps.pug)
   // wb-shift.wb-tabs
   $(document).on("wb-updated.wb-tabs", ".wb-tabs", function (event, $newPanel) {
-    if ($newPanel.is('#details-step2')) {
+    if ($newPanel.is('#details-step2') && wizardChanged) {
       updateWizard();
+      wizardChanged = false;
     }
   });
+
+  $('#wizard input').change(function () { wizardChanged = true; })
 
   // Focus highlighting
   $('#wizard input').focus(function () { $(this).closest('.checkbox').addClass('focus'); });
