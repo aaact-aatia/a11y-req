@@ -5,9 +5,9 @@ const Clause = require('../models/clauseSchema');
 const toClauseTree = require('./clauseTree');
 
 const strings = {
-  listTitle: 'Edit commodity presets',
-  createTitle: 'Create commodity preset',
-  presetNameRequired: 'Preset name required'
+  listTitle: 'Edit mappings',
+  createTitle: 'Create mapping',
+  presetNameRequired: 'Mapping name required'
 }
 
 // Display list of all Presets
@@ -19,7 +19,7 @@ exports.preset_list = (req, res, next) => {
       res.render('item_list', {
         title: strings.listTitle,
         item_list: list_presets,
-        type: 'preset',
+        type: 'mapping',
         breadcrumbs: [
           { url: '/', text: 'Home' },
           { url: '/edit', text: 'Edit content' }
@@ -39,7 +39,7 @@ exports.preset_create_get = (req, res, next) => {
         breadcrumbs: [
           { url: '/', text: 'Home' },
           { url: '/edit', text: 'Edit content' },
-          { url: '/edit/presets', text: 'Edit presets' },
+          { url: '/edit/presets', text: 'Edit mappings' },
         ]
       });
     });
@@ -103,7 +103,7 @@ exports.preset_update_get = (req, res, next) => {
       breadcrumbs: [
         { url: '/', text: 'Home' },
         { url: '/edit', text: 'Edit content' },
-        { url: '/edit/presets', text: 'Edit presets' },
+        { url: '/edit/presets', text: 'Edit mappings' },
       ]
     });
   });

@@ -3,7 +3,7 @@
 
 $(document).on("wb-ready.wb", function (event) {
 
-  setupPresetHandler();
+  // setupPresetHandler();
 
   setupTreeHandler();
 
@@ -35,30 +35,6 @@ $(document).on("wb-ready.wb", function (event) {
     }
   });
 });
-
-
-/* Generator preset handling */
-
-var setupPresetHandler = function () {
-  // #preset is the <select> element (see /views/select_fps.pug)
-  $('#preset').change(function () { updatePresetSelections(); });
-};
-
-var updatePresetSelections = function () {
-  var preset = $('#preset').val();
-  // Save existing selections
-
-  // Uncheck all checkboxes
-  $('#clauses input').prop('checked', false);
-  // Get hidden preset data (see /views/select_fps.pug)
-  $('#' + preset + ' li').each(function () {
-    // Check the preset checkboxes
-    $('#' + this.innerHTML).prop('checked', true);
-  });
-  $('[role="treeitem"]').each(function () {
-    updateAriaChecked($(this));
-  });
-};
 
 
 /* Manual clause list handling */
@@ -166,7 +142,7 @@ var setupWizardHandler = function () {
   // #preset is the <select> element (see /views/select_fps.pug)
   // wb-shift.wb-tabs
   $(document).on("wb-updated.wb-tabs", ".wb-tabs", function (event, $newPanel) {
-    if ($newPanel.is('#details-step2') && wizardChanged) {
+    if (wizardChanged) {
       updateWizard();
       wizardChanged = false;
     }
@@ -175,29 +151,29 @@ var setupWizardHandler = function () {
   $('#wizard input').change(function () { wizardChanged = true; })
 
   // Focus highlighting
-  $('#wizard input').focus(function () { $(this).closest('.checkbox').addClass('focus'); });
-  $('#wizard input').blur(function () { $(this).closest('.checkbox').removeClass('focus'); });
+  // $('#wizard input').focus(function () { $(this).closest('.checkbox').addClass('focus'); });
+  // $('#wizard input').blur(function () { $(this).closest('.checkbox').removeClass('focus'); });
 };
 
-var allChecked = function (ids) {
-  for (var i = 0; i < ids.length; i++) {
-    id = ids[i];
-    if (!$('#' + id).is(':checked')) {
-      return false;
-    }
-  }
-  return true;
-}
+// var allChecked = function (ids) {
+//   for (var i = 0; i < ids.length; i++) {
+//     id = ids[i];
+//     if (!$('#' + id).is(':checked')) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
 
-var noneChecked = function (ids) {
-  for (var i = 0; i < ids.length; i++) {
-    var id = ids[i];
-    if ($('#' + id).is(':checked')) {
-      return false;
-    }
-  }
-  return true;
-}
+// var noneChecked = function (ids) {
+//   for (var i = 0; i < ids.length; i++) {
+//     var id = ids[i];
+//     if ($('#' + id).is(':checked')) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
 
 var selectClauses = function (clauses, select) {
   $clauses = $('#clauses');
@@ -224,16 +200,49 @@ var selectNone = function () {
 
 var updateWizard = function () {
   selectNone();
-  for (var i = 0; i < positiveMappings.length; i++) {
-    var mapping = positiveMappings[i];
-    if (allChecked(mapping.questions)) {
-      selectClauses(mapping.clauses, true);
-    }
-  }
-  for (var i = 0; i < negativeMappings.length; i++) {
-    var mapping = negativeMappings[i];
-    if (noneChecked(mapping.questions)) {
-      selectClauses(mapping.clauses, false);
-    }
-  }
+  // for (var i = 0; i < positiveMappings.length; i++) {
+  //   var mapping = positiveMappings[i];
+  //   if (allChecked(mapping.questions)) {
+  //     selectClauses(mapping.clauses, true);
+  //   }
+  // }
+  // for (var i = 0; i < negativeMappings.length; i++) {
+  //   var mapping = negativeMappings[i];
+  //   if (noneChecked(mapping.questions)) {
+  //     selectClauses(mapping.clauses, false);
+  //   }
+  // }
+  // Select relevant Step 2 clauses based on Step 1 selections
+  $('#wizard input:checked').each(function () {
+    var presetId = this.id;
+    $('#preset-data ul[data-preset-id='+presetId+'] li').each(function () {
+      $clause = $('#'+this.innerHTML);
+      if (!$clause.is(':checked')) {
+        $clause.click();
+      }
+    });
+  });
 };
+
+/* Generator preset handling */
+
+// var setupPresetHandler = function () {
+//   // #preset is the <select> element (see /views/select_fps.pug)
+//   $('#preset').change(function () { updatePresetSelections(); });
+// };
+
+// var updatePresetSelections = function () {
+//   var preset = $('#preset').val();
+//   // Save existing selections
+
+//   // Uncheck all checkboxes
+//   $('#clauses input').prop('checked', false);
+//   // Get hidden preset data (see /views/select_fps.pug)
+//   $('#' + preset + ' li').each(function () {
+//     // Check the preset checkboxes
+//     $('#' + this.innerHTML).prop('checked', true);
+//   });
+//   $('[role="treeitem"]').each(function () {
+//     updateAriaChecked($(this));
+//   });
+// };
