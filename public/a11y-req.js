@@ -139,8 +139,7 @@ var initCK = function (element, lang) {
 var setupWizardHandler = function () {
 
   wizardChanged = false;
-  // #preset is the <select> element (see /views/select_fps.pug)
-  // wb-shift.wb-tabs
+
   $(document).on("wb-updated.wb-tabs", ".wb-tabs", function (event, $newPanel) {
     if (wizardChanged) {
       updateWizard();
@@ -154,26 +153,6 @@ var setupWizardHandler = function () {
   // $('#wizard input').focus(function () { $(this).closest('.checkbox').addClass('focus'); });
   // $('#wizard input').blur(function () { $(this).closest('.checkbox').removeClass('focus'); });
 };
-
-// var allChecked = function (ids) {
-//   for (var i = 0; i < ids.length; i++) {
-//     id = ids[i];
-//     if (!$('#' + id).is(':checked')) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
-
-// var noneChecked = function (ids) {
-//   for (var i = 0; i < ids.length; i++) {
-//     var id = ids[i];
-//     if ($('#' + id).is(':checked')) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
 
 var selectClauses = function (clauses, select) {
   $clauses = $('#clauses');
@@ -200,20 +179,9 @@ var selectNone = function () {
 
 var updateWizard = function () {
   selectNone();
-  // for (var i = 0; i < positiveMappings.length; i++) {
-  //   var mapping = positiveMappings[i];
-  //   if (allChecked(mapping.questions)) {
-  //     selectClauses(mapping.clauses, true);
-  //   }
-  // }
-  // for (var i = 0; i < negativeMappings.length; i++) {
-  //   var mapping = negativeMappings[i];
-  //   if (noneChecked(mapping.questions)) {
-  //     selectClauses(mapping.clauses, false);
-  //   }
-  // }
+
   // Select relevant Step 2 clauses based on Step 1 selections
-  $('#wizard input:checked').each(function () {
+  $('#wizard input:checked').not('.onlyIf').each(function () {
     var presetId = this.id;
     $('#preset-data ul[data-preset-id='+presetId+'] li').each(function () {
       $clause = $('#'+this.innerHTML);
@@ -222,6 +190,18 @@ var updateWizard = function () {
       }
     });
   });
+
+  // Deselect irrelevant Step 2 clauses based on Step 1 "if and only if" selections
+  $('#wizard input.onlyIf').not(':checked').each(function () {
+    var presetId = this.id;
+    $('#preset-data ul[data-preset-id='+presetId+'] li').each(function () {
+      $clause = $('#'+this.innerHTML);
+      if ($clause.is(':checked') && $clause.closest('li').hasClass('endNode')) {
+        $clause.click();
+      }
+    });
+  });
+
 };
 
 /* Generator preset handling */

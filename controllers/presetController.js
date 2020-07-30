@@ -5,9 +5,9 @@ const Clause = require('../models/clauseSchema');
 const toClauseTree = require('./clauseTree');
 
 const strings = {
-  listTitle: 'Edit mappings',
-  createTitle: 'Create mapping',
-  presetNameRequired: 'Mapping name required'
+  listTitle: 'Edit presets',
+  createTitle: 'Create preset',
+  presetNameRequired: 'Preset name required'
 }
 
 // Display list of all Presets
@@ -19,7 +19,7 @@ exports.preset_list = (req, res, next) => {
       res.render('item_list', {
         title: strings.listTitle,
         item_list: list_presets,
-        type: 'mapping',
+        type: 'preset',
         breadcrumbs: [
           { url: '/', text: 'Home' },
           { url: '/edit', text: 'Edit content' }
@@ -39,7 +39,7 @@ exports.preset_create_get = (req, res, next) => {
         breadcrumbs: [
           { url: '/', text: 'Home' },
           { url: '/edit', text: 'Edit content' },
-          { url: '/edit/presets', text: 'Edit mappings' },
+          { url: '/edit/presets', text: 'Edit presets' },
         ]
       });
     });
@@ -63,7 +63,8 @@ exports.preset_create_post = (req, res, next) => {
     description: req.body.description,
     frDescription: req.body.frDescription,
     clauses: req.body.clauses,
-    order: req.body.order
+    order: req.body.order,
+    onlyIf: req.body.onlyIf === 'on'
   });
 
   // Check if Preset with same name already exists.
@@ -103,7 +104,7 @@ exports.preset_update_get = (req, res, next) => {
       breadcrumbs: [
         { url: '/', text: 'Home' },
         { url: '/edit', text: 'Edit content' },
-        { url: '/edit/presets', text: 'Edit mappings' },
+        { url: '/edit/presets', text: 'Edit presets' },
       ]
     });
   });
@@ -130,6 +131,7 @@ exports.preset_update_post = (req, res, next) => {
     frDescription: req.body.frDescription,
     clauses: req.body.clauses,
     order: req.body.order,
+    onlyIf: req.body.onlyIf === 'on',
     _id: req.params.id // This is required, or a new ID will be assigned
   });
 

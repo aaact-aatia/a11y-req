@@ -1,11 +1,11 @@
 -var i = 0
 
-mixin checkbox(label, name)
+mixin checkbox(label, name, onlyIf)
   if name === undefined
     -name = 'checkbox' + i++
   .checkbox
       label(for=name)
-        input(id=name type='checkbox' name=name)
+        input(id=name type='checkbox' name=name class=(onlyIf ? 'onlyIf' : false))
         | !{label}
 
 section#wizard
@@ -18,7 +18,7 @@ section#wizard
     .row
       .col-md-6
         each preset in preset_list
-          +checkbox(preset.name, preset._id)
+          +checkbox(preset.name, preset._id, preset.onlyIf)
 
   //- Hidden data (for client-side javascript)
   .hidden#preset-data
