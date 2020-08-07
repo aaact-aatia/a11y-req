@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"heroku_zrwkkfs5.infos"}],"uuid":"a3ea48b71b8944df8316aeb7e4cc342d"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"a11y-req.infos"}],"uuid":"62411bd4a4ee4b98a703c9f210c3dd2a"}
