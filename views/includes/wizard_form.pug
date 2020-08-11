@@ -17,8 +17,13 @@ section#wizard
       span.field-name Does the <abbr title="Information Communication Technology">ICT</abbr> procurement provide...
     .row
       .col-md-6
-        each preset in preset_list
-          +checkbox(preset.name, preset._id, preset.onlyIf)
+        each preset, index in preset_list
+          if index <= preset_list.length/2
+            +checkbox(preset.name, preset._id, preset.onlyIf)
+      .col-md-6
+        each preset, index in preset_list
+          if index > preset_list.length/2
+            +checkbox(preset.name, preset._id, preset.onlyIf)
 
   //- Hidden data (for client-side javascript)
   .hidden#preset-data
