@@ -7,7 +7,8 @@ const PresetSchema = new Schema({
   description: { type: String },
   frDescription: { type: String },
   clauses: [{ type: Schema.Types.ObjectId, ref: 'Clause' }],
-  order: { type: Number }
+  order: { type: Number },
+  onlyIf: { type: Boolean }
 });
 
 PresetSchema.virtual('url').get(function () {

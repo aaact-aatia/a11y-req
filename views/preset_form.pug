@@ -6,12 +6,12 @@ block form
   form(method='POST' action='')
     .form-group
       label.required(for='name')
-        span.field-name Commodity name (English) 
+        span.field-name Preset name (English) 
         strong.required (required)
       input#name.form-control(type='text' placeholder='' required='required' name='name' value=(itemExists ? item.name : ''))
     .form-group
       label.required(for='frName')
-        span.field-name Commodity name (French) 
+        span.field-name Preset name (French) 
         strong.required (required)
       input#frName.form-control(lang='fr' type='text' placeholder='' required='required' name='frName' value=(itemExists ? item.frName : ''))
     .form-group
@@ -30,6 +30,10 @@ block form
       label(for='order')
         span.field-name Order (1 comes before 2, etc.) 
       input#order.form-control(type='text' placeholder='' name='order' value=(itemExists ? item.order : ''))
+    .checkbox
+      label(for='onlyIf')
+        input#onlyIf(type='checkbox' name='onlyIf' checked=(itemExists ? item.onlyIf : false))
+        | Select clauses if and only if the clause is included in another selected preset AND this preset is selected
 
     include includes/clause_tree
       
