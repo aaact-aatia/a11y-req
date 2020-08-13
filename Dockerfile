@@ -5,7 +5,7 @@ ENV NODE_ENV "production"
 ENV POPULATE_DB "true"
 
 # Change me in production
-ENV MONGODB_URI "mongodb://127.0.0.1/a11y-req" 
+ENV DB_URI "mongodb://127.0.0.1/a11y-req" 
 ENV BASIC_AUTH_USERNAME "admin"
 ENV BASIC_AUTH_PASSWORD "admin"
 ENV WAIT_FOR_MONGO "true"

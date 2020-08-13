@@ -11,7 +11,7 @@ const app = express();
 app.locals.moment = require('moment');
 
 // Database connection
-const mongoDB = process.env.MONGODB_URI || 'mongodb://127.0.0.1/a11y-req';
+const mongoDB = process.env.DB_URI || 'mongodb://127.0.0.1/a11y-req';
 mongoose.connect(mongoDB, { 
   useNewUrlParser: true,
   useUnifiedTopology: true
