@@ -100,7 +100,7 @@ Tree.prototype.setFocusToItem = function (treeitem) {
       ti.domNode.focus();
     }
     else {
-      ti.domNode.tabIndex = -1;
+      ti.domNode.tabIndex = 0;//This will need to be cleaned up if implemented
     }
   }
 
@@ -287,7 +287,7 @@ var Treeitem = function (node, treeObj, group) {
     return;
   }
 
-  node.tabIndex = -1;
+  node.tabIndex = 0;//This will need to be cleaned up if implemented
   this.tree = treeObj;
   this.groupTreeitem = group;
   this.domNode = node;
@@ -333,7 +333,7 @@ var Treeitem = function (node, treeObj, group) {
 };
 
 Treeitem.prototype.init = function () {
-  this.domNode.tabIndex = -1;
+  this.domNode.tabIndex = 0;//This will need to be cleaned up if implemented
 
   if (!this.domNode.getAttribute('role')) {
     this.domNode.setAttribute('role', 'treeitem');
