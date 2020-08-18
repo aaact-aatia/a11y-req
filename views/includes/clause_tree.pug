@@ -8,11 +8,11 @@ mixin fpsCheckbox(clause, selected, endNode)
       i.expand
       i.collapse
     label(for=clause.id)
-      input(id=clause.id type='checkbox' name='clauses' data-number=clause.number value=clause.id class=clause.informative ? 'informative' : '' checked=selected tabindex='-1' aria-hidden='true')
+      input(id=clause.id type='checkbox' name='clauses' data-number=clause.number value=clause.id class=clause.informative ? 'informative' : '' checked=selected)
       span.number #{clause.number} 
       span.name #{clause.name}
     if endNode
-      .detail-inner
+      .detail-inner(tabindex='0')
         | !{clause.description}
 
 mixin createTree(tree)

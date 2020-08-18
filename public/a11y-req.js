@@ -93,6 +93,7 @@ var setupTreeHandler = function () {
     e.preventDefault();
   });
   $('#expandTree').click(function (e) {
+    console.log("Why is this being called by the enter key on checkboxes?");//debug statement
     $('li.parentNode').attr('aria-expanded', true);
     e.preventDefault();
   });
