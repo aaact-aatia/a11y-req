@@ -185,7 +185,7 @@ var updateWizard = function () {
     var presetId = this.id;
     $('#preset-data ul[data-preset-id='+presetId+'] li').each(function () {
       $clause = $('#'+this.innerHTML);
-      if (!$clause.is(':checked')) {
+      if (!$clause.is(':checked') && $clause.closest('li').hasClass('endNode')) {
         $clause.click();
       }
     });
