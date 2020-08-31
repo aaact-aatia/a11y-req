@@ -44,5 +44,5 @@ fieldset#clauses
   //- aria-labelledby is not be necessary due to the fieldset legend
   //- aria-selectable='false' is not ideal, but the treeitems need aria-checked
   //- property rather than aria-selected (to express 'mixed' state)
-  ul.clause-tree(role='tree' aria-selectable='false')
+  ul.clause-tree(role='tree')
     +createTree(clause_tree)
