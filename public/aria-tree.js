@@ -420,6 +420,7 @@ Treeitem.prototype.handleKeydown = function (event) {
         defined near the bottom of this file */
         // tgt.dispatchEvent(clickEvent);
         if ($(document.activeElement).is('input:checkbox')) {
+          flag = true;
           break;
         }
         cycleSelect($(tgt));
