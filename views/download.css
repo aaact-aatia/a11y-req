@@ -58,6 +58,10 @@ figcaption {
   font-weight: bold;
 }
 
+table.table.table-bordered.evaluation th.col-sm-6 {
+  width: 50%;
+}
+
 /* MS Word specific CSS to force landscape orientation, correct styles, etc */
 
 /* @page WordSection1 {

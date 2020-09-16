@@ -1,0 +1,46 @@
+if item_list.length > 0
+  table.table.table-bordered.evaluation(alt='Requirements table to be completed by evaluator')
+    thead
+      tr.active
+        th.col-sm-4(scope='col') EN 301 549 (2018) clauses
+        th(scope='col') Supports?
+        th(scope='col') Score
+        th.col-sm-6(scope='col') Explanation
+    tbody
+      each item in test_list
+        tr
+          td(valign='top')
+            p
+              strong #{item.number} #{item.name}
+          td(valign='top')
+            p Supports
+            p Partially Supports
+            p Does Not Support
+            p Not Applicable
+          td(valign='top')
+            p 1
+            p 0.5
+            p 0
+          td(valign='top')
+            if item.informative || item.description.length === 0
+              | ---
+            else
+              | See issues report for details
+      tr
+        td(valign='top') Total score
+        td(valign='top') ---
+        td(valign='top') 
+        td(valign='top') Sum of scores above
+      tr
+        td(valign='top') Maximum score
+        td(valign='top') ---
+        td(valign='top')= test_list.length
+        td(valign='top') Number of criteria above
+      tr
+        td(valign='top') Conformance score (0 to 1)
+        td(valign='top') ---
+        td(valign='top') 
+        td(valign='top') Total score / Maximum score
+else
+  p
+    strong There are no functional accessibility requirements.

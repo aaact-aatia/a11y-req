@@ -1,0 +1,92 @@
+doctype html
+html(lang='en')
+  head
+    title Information and Communications Technology (ICT) Accessibility Evaluation (Based on EN 301 549 – 2018)
+    meta(charset='utf-8')
+    style
+      include download.css
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+    .WordSection1
+      p Template generated #{moment().format('YYYY-MM-DD')}
+      h1 Information and Communications Technology (ICT) Accessibility Evaluation (Based on EN 301 549 – 2018)
+      h2 Declaration
+      p
+        | The form below refers to 
+        em &lt;Name and version of ICT under evaluation&gt;
+        | .
+      p
+        | It has been completed by the AAACT Program on 
+        em &lt;Date&gt;.
+      p The following tools or methods were used during evaluation:
+      ul
+        li Operating Systems: Microsoft Windows 10
+        li
+          | Browsers: 
+          em &lt;List all browsers and versions, e.g. Internet Explorer 11, Firefox 79&gt;
+        li
+          | Adaptive Technology: 
+          em &lt;List all AT, e.g. NVDA 2020.2&gt;
+        li Manual code inspection
+        li Keyboard-only testing
+      h2 Summary of results
+      p
+        | The conformance score for this ICT is 
+        em &lt;Conformance score&gt;
+        | , or 
+        strong
+          em &lt;Conformance score * 100&gt;
+          | %.
+      h2 Scope of evaluation
+      include includes/scope_evaluation
+      h2 Explanation of the table columns
+      p
+        | The format closely follows the Voluntary Product Accessibility Template&reg; (VPAT&reg;) 2.3 EU.
+      ul
+        li
+          strong &quot;EN 301 549 Clauses&quot;
+          |  includes the numbers and names of the EN 301 549 (2018) clauses that have been evaluated for the ICT product or service.
+        li
+          strong &quot;Supports?&quot;
+          |  is to be filled in by the evaluator with one of the following terms:
+        ul
+          li
+            strong Supports
+            | : The functionality of the product or service has at least one method that meets the criterion without known defects or meets with equivalent facilitation.
+          li
+            strong Partially Supports
+            | : Some functionality of the product or service does not meet the criterion.
+          li
+            strong Does Not Support
+            | : The majority of product or service functionality does not meet the criterion.
+          li
+            strong Not Applicable
+            | : The criterion is not relevant to the product or service.
+        li
+          strong &quot;Points&quot;
+          |  is to be filled in by the evaluator with one of the following numbers:
+        ul
+          li
+            strong If &quot;Supports&quot; or &quot;Not Applicable&quot;
+            | : 1
+          li
+            strong If &quot;Partially Supports&quot;
+            | : 0.5
+          li
+            strong If &quot;Does Not Support&quot;
+            | : 0
+        li
+          strong &quot;Explanations&quot;
+          |  is to be filled in by the evaluator and should explain the evaluator&rsquo;s response to &quot;Supports?&quot;.
+        ul
+          li
+            strong If &quot;Supports&quot;
+            | : No response required.
+          li
+            strong If &quot;Partially Supports&quot; or &quot;Does Not Support&quot;
+            | : Explain what functions fail to meet the criterion and accessible alternatives provided.
+          li
+            strong If &quot;Not Applicable&quot;
+            | : Explain why the criterion does not apply.
+      h2 Testing results
+      include includes/table_evaluation
