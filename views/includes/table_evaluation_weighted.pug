@@ -2,9 +2,11 @@ if item_list.length > 0
   table.table.table-bordered.evaluation(alt='Requirements table to be completed by evaluator')
     thead
       tr.active
-        th.col-sm-4(scope='col') EN 301 549 v2.1.2 clauses
+        th.col-sm-4(scope='col') EN 301 549 (2018) clauses
         th(scope='col') Supports?
         th(scope='col') Points
+        th(scope='col') Weight
+        th(scope='col') Score
         th.col-sm-6(scope='col') Explanation
     tbody
       each item in test_list
@@ -14,22 +16,30 @@ if item_list.length > 0
               strong #{item.number} #{item.name}
           td(valign='top') &nbsp;
           td(valign='top') &nbsp;
+          td(valign='top') #{item.weight}
+          td(valign='top') &nbsp;
           td(valign='top') &nbsp;
       tr
-        td(valign='top') Total points
+        td(valign='top') Total score
+        td(valign='top') ---
+        td(valign='top') ---
         td(valign='top') ---
         td(valign='top') &nbsp;
-        td(valign='top') Sum of points above
+        td(valign='top') Sum of scores above
       tr
-        td(valign='top') Maximum points
+        td(valign='top') Maximum score
         td(valign='top') ---
-        td(valign='top')= test_list.length
-        td(valign='top') Number of criteria above
+        td(valign='top') ---
+        td(valign='top') &nbsp;
+        td(valign='top') ---
+        td(valign='top') Sum of weights above
       tr
         td(valign='top') Conformance score %
         td(valign='top') ---
+        td(valign='top') ---
+        td(valign='top') ---
         td(valign='top') &nbsp;
-        td(valign='top') Total points * 100 / Maximum points
+        td(valign='top') Total score * 100 / Maximum score
 else
   p
     strong There are no functional accessibility requirements.
