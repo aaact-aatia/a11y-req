@@ -16,7 +16,7 @@ if item_list.length > 0
               strong #{item.number} #{item.name}
           td(valign='top') &nbsp;
           td(valign='top') &nbsp;
-          td(valign='top') #{item.weight}
+          td(valign='top')= item.weight ? item.weight : '1'
           td(valign='top') &nbsp;
           td(valign='top') &nbsp;
       tr

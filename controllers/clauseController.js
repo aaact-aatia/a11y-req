@@ -116,6 +116,7 @@ exports.clause_update_post = (req, res, next) => {
     frDescription: req.body.frDescription,
     compliance: req.body.compliance,
     frCompliance: req.body.frCompliance,
+    weight: req.body.weight,
     _id: req.params.id // This is required, or a new ID will be assigned
   });
 

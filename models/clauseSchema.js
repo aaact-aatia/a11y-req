@@ -9,7 +9,8 @@ const ClauseSchema = new Schema({
   description: { type: String },
   frDescription: { type: String },
   compliance: { type: String },
-  frCompliance: { type: String }
+  frCompliance: { type: String },
+  weight: { type: Number }
 });
 
 ClauseSchema.virtual('url').get(function () {
