@@ -19,6 +19,39 @@ if item_list.length > 0
           td(valign='top')= item.weight ? item.weight : '1'
           td(valign='top') &nbsp;
           td(valign='top') &nbsp;
+      //- The code below will include the informative and empty clauses as well to provide visual heading structure.
+      //- It is probably unneccessary to do so.
+      //- 
+      //- each item in item_list
+      //-   tr
+      //-     td(valign='top')
+      //-       p
+      //-         strong #{item.number} #{item.name}
+      //-     td(valign='top')
+      //-       if item.informative || item.description.length === 0
+      //-         | ---
+      //-       else
+      //-         | &nbsp;
+      //-     td(valign='top')
+      //-       if item.informative || item.description.length === 0
+      //-         | ---
+      //-       else
+      //-         | &nbsp;
+      //-     td(valign='top')
+      //-       if item.informative || item.description.length === 0
+      //-         | ---
+      //-       else
+      //-         = item.weight ? item.weight : '1'
+      //-     td(valign='top')
+      //-       if item.informative || item.description.length === 0
+      //-         | ---
+      //-       else
+      //-         | &nbsp;
+      //-     td(valign='top')
+      //-       if item.informative || item.description.length === 0
+      //-         | ---
+      //-       else
+      //-         | &nbsp;
       tr
         td(valign='top') Total score
         td(valign='top') ---
