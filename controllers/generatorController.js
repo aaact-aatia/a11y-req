@@ -46,11 +46,18 @@ exports.wizard_fr_get = (req, res, next) => {
 exports.download = (req, res, next) => {
   let strings = { template: req.params.template };
   if (req.params.template.slice(-2) === 'fr') {
-    strings.filename = 'Exigences en matière de TIC accessibles.docx';
-    strings.title = 'Exigences en matière de TIC accessibles (basées sur la norme EN 301 549 – 2018)';
+    strings.filename = 'Annexe X - Exigences en matière de TIC accessibles.docx';
+    strings.title = 'Exigences en matière de TIC accessibles (basées sur la norme EN 301 549 v2.1.2)';
   } else {
-    strings.filename = 'ICT Accessibility Requirements.docx';
-    strings.title = 'ICT Accessibility Requirements (Based on EN 301 549 – 2018)';
+    strings.filename = 'Annex X - ICT Accessibility Requirements.docx';
+    strings.title = 'ICT Accessibility Requirements (Based on EN 301 549 v2.1.2)';
+  }
+  if (req.params.template.includes("evaluation")) {
+    if (req.params.template.slice(-2) === 'fr') {
+      strings.filename = "Annexe Y - Évaluation de l'accessibilité des TIC.docx";
+    } else {
+      strings.filename = 'Annex Y - ICT Accessibility Evaluation.docx';
+    }
   }
   // Edge case: < 2 clauses selected
   if (!(req.body.clauses instanceof Array)) {
