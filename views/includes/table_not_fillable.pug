@@ -12,9 +12,12 @@ if item_list.length > 0
               strong #{item.number} #{item.name}
             | !{item.description}
           td(valign='top')
-            p
-              strong C.#{item.number} #{item.name}
-            | !{item.compliance}
+            if item.description.length > 0
+              p
+                strong C.#{item.number} #{item.name}
+              | !{item.compliance}
+            else
+              | ---
 else
   p
     strong There are no functional accessibility requirements.
