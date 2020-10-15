@@ -1,6 +1,6 @@
 if test_list.length === 1
   p La clause #{test_list[0].number} a été jugée pertinente pour cette TIC.
-else
+else if test_list.length > 0
   p
     | Les clauses 
     each item, i in test_list
@@ -10,3 +10,6 @@ else
         | #{item.number} 
       else
         | et #{item.number} ont été jugés pertinents pour cette TIC.
+else
+  p
+    strong Il n'y a pas d'exigences d'accessibilité fonctionnelle.

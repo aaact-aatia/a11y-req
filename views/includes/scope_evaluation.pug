@@ -1,6 +1,6 @@
 if test_list.length === 1
   p Clause #{test_list[0].number} has been evaluated for this ICT.
-else
+else if test_list.length > 0
   p
     | Clauses 
     each item, i in test_list
@@ -10,3 +10,6 @@ else
         | #{item.number} 
       else
         | and #{item.number} have been evaluated for this ICT.
+else
+  p
+    strong There are no functional accessibility requirements.
