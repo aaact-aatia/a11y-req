@@ -50,6 +50,6 @@ block form
     .form-group
       label(for='weight')
         span.field-name Weight (default: 1)
-      input#weight.form-control(type='text' placeholder='' name='weight' required='required' value=(itemExists ? item.weight : '1'))
+      input#weight.form-control(type='text' placeholder='' name='weight' value=(itemExists && item.weight ? item.weight : '1'))
       
     button.btn.btn-primary(type='submit') Submit 

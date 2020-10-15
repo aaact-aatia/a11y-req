@@ -1,0 +1,23 @@
+if item_list.length > 0
+  table.table.table-bordered(alt='Tableau des exigences EN 301 549 et essais')
+    thead
+      tr.active
+        th.col-sm-6(scope='col') Clause de la norme EN 301 549
+        th.col-sm-4(scope='col') Determination of compliance
+    tbody
+      each item in item_list
+        tr
+          td(valign='top')
+            p
+              strong #{item.number} #{item.frName}
+            | !{item.frDescription}
+          td(valign='top')
+            if item.description.length > 0
+              p
+                strong C.#{item.number} #{item.frName}
+              | !{item.frCompliance}
+            else
+              | ---
+else
+  p
+    strong Il n'y a pas d'exigences d'accessibilité fonctionnelle.

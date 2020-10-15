@@ -1,0 +1,16 @@
+doctype html
+html(lang='fr')
+  head
+    title Rapport de conformité d'accessibilité des technologies de l'information et des communications (TIC) (EN 301 549 v2.1.2)
+    meta(charset='utf-8')
+    style
+      include download.css
+
+  body(vocab='http://schema.org/' typeof='WebPage')
+    .WordSection1
+      p Généré le #{moment().format('YYYY-MM-DD')}
+      include includes/evaluation_intro_fr.html
+      h2 Portée de l'évaluation
+      include includes/scope_evaluation_fr
+      h2 Résultats de l'évaluation
+      include includes/table_evaluation_fr
