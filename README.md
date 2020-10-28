@@ -21,7 +21,7 @@ The wizard follows three steps:
 All generated documents include a statement which identifies precisely which clauses are included. This statement can be copy / pasted into this tool at step 2 in order to resume fine-tuning of a previous clause selection.
 
 ## Known issues
-This application should be considered a prototype. While the documents generated are free from textual errors and can be used in actual procurement activities, there are a number of unresolved issues:
+This application should be considered a prototype. While the documents generated are free from textual errors and can be used in actual procurement activities, there are a number of unresolved issues, including:
 
 ### Generated documents
 - Image captions are not displayed correctly in the Word documents
@@ -46,6 +46,8 @@ The above issues are primarily due to the requirement of generating Word documen
 
 Instructions for editing the generated documents are available within the app (Step 3 instructions).
 
+Other [issues documented in this GitHub Repo](https://github.com/aaact-aatia/a11y-req/issues).
+
 ## Setup
 
 ### Running Natively
@@ -65,6 +67,7 @@ A production ready container has been created for your convenience complete with
 - Run `mongorestore dump` to populate the database
 - Run `npm run devstart` to start the node.js server
 - Visit [localhost:3000](http://localhost:3000)
+- To edit content via the CMS, visit [localhost:3000/edit](http://localhost:3000/edit)
 
 ### Using Docker 
 
@@ -102,7 +105,11 @@ The files most likely to require modification are:
 
 **`/app.js`**
 
-Set a unique username and password on line 37: `(user, pass, cb) => cb(user === 'admin' && pass === 'admin')`
+In lieu of setting username and password with environment variables, you can hardcode them on lines 38 and 39:
+```
+const BASIC_AUTH_USERNAME = process.env.BASIC_AUTH_USERNAME || "admin";
+const BASIC_AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD || "admin";
+```
 
 **`/views/wizard.pug`**
 
@@ -111,10 +118,6 @@ The main page of the application, containing instructions for end-users and `inc
 **`/views/includes/wizard_form.pug`**
 
 Wizard questions, of form `+checkbox('User-facing physical (hardware) components', 'hardware')`. The first parameter to `checkbox()` is the question itself, and the second is the ID which needs to be used in `mappings.js`.
-
-**`/public/mappings.js`**
-
-Maps wizard questions to clauses
 
 **`/views/includes/download_chooser.pug`**
 
