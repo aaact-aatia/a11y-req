@@ -21,7 +21,7 @@
     "http-auth": "^3.2.3",
     "http-errors": "~1.6.3",
     "innertext": "^1.0.3",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "moment": "^2.24.0",
     "mongoose": "^5.7.5",
     "morgan": "~1.9.1",
