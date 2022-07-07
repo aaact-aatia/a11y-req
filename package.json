@@ -22,7 +22,7 @@
     "http-errors": "~1.6.3",
     "innertext": "^1.0.3",
     "jsdom": "^15.1.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.7.5",
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
